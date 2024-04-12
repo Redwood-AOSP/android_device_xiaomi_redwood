@@ -101,6 +101,7 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/msm_audio_cal        0660   system     audio
 /dev/msm_hweffects        0660   system     audio
 /dev/msm_rtac             0660   system     audio
+/dev/ttyHS0               0660   bluetooth  net_bt
 
 # NFC permissions
 /dev/nq-nci               0660    nfc         nfc
