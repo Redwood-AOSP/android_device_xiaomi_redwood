@@ -75,6 +75,10 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.service \
     android.hardware.soundtrigger@2.3-impl
 
+# Display
+PRODUCT_VENDOR_PROPERTIES += \
+    vendor.display.idle_time=0
+
 # Dolby
 $(call inherit-product, hardware/dolby/dolby.mk)
 
