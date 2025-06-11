@@ -367,20 +367,26 @@ $(foreach sku_out, $(TARGET_COPY_OUT_NFC_SKU_PERMISSIONS), \
  endif
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+PRODUCT_PACKAGES += \
+    ApertureOverlayRedwood \
+    CarrierConfigOverlayRedwood \
+    LineageSDKOverlayRedwood \
+    TelephonyOverlayRedwood
+
+PRODUCT_PACKAGES += \
+    FrameworkOverlayRedwood \
+    SettingsOverlayRedwood \
+    SettingsProviderOverlayRedwoodCN \
+    SettingsProviderOverlayRedwoodGL \
+    SettingsProviderOverlayRedwoodIN \
+    SimpleDeviceConfigOverlayRedwood \
+    SystemUIOverlayRedwood \
+    WifiOverlayRedwood \
+    WifiOverlayRedwoodCN \
+    WifiOverlayRedwoodGL \
+    WifiOverlayRedwoodIN
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
-
-# Overlays-RRO
-PRODUCT_PACKAGES += \
-    redwoodCNSettingsProviderOverlay \
-    redwoodCNWifiOverlay \
-    redwoodGLSettingsProviderOverlay \
-    redwoodGLWifiOverlay \
-    redwoodINSettingsProviderOverlay \
-    redwoodINWifiOverlay
 
 # Partitions
 PRODUCT_PACKAGES += \
@@ -421,10 +427,6 @@ PRODUCT_COPY_FILES += \
 # QTI fwk-detect
 PRODUCT_PACKAGES += \
     libvndfwk_detect_jni.qti.vendor # Needed by CNE app
-
-# RIL
-PRODUCT_PACKAGES += \
-    CarrierConfigOverlay
 
 # Sensors
 PRODUCT_PACKAGES += \
@@ -534,7 +536,6 @@ PRODUCT_PACKAGES += \
     android.hardware.wifi-service \
     hostapd \
     libwifi-hal-qcom \
-    WifiOverlay \
     wpa_cli \
     wpa_supplicant \
     wpa_supplicant.conf
