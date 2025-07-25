@@ -285,6 +285,9 @@ vendor.usb.use_ffs_mtp=1
 # Virtual A/B
 ro.virtual_ab.compression.threads=true
 
+# Virtual A/B
+ro.virtual_ab.compression.threads=true
+
 # Wifi
 wifi.aware.interface=wifi-aware0
 
