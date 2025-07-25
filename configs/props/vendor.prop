@@ -282,6 +282,9 @@ vendor.sys.thermal.data.path=/data/vendor/thermal/
 sys.usb.mtp.batchcancel=1
 vendor.usb.use_ffs_mtp=1
 
+# Virtual A/B
+ro.virtual_ab.compression.threads=true
+
 # Wifi
 wifi.aware.interface=wifi-aware0
 
