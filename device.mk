@@ -275,6 +275,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media/etc/media_codecs_lahaina.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_lahaina.xml \
     $(LOCAL_PATH)/media/etc/media_codecs_yupik_v1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_yupik_v1.xml
 
+$(call soong_config_set,stagefright,target_disable_thumbnail_block_model,true)
+
 # Native libraries whitelist
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
