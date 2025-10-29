@@ -172,7 +172,6 @@ persist.vendor.fingerprint.sensor_location=1080|920|200|local:463094648085706176
 vendor.gatekeeper.disable_spu=true
 
 # Graphics
-debug.mdpcomp.logs=0
 debug.sf.disable_client_composition_cache=1
 debug.sf.enable_advanced_sf_phase_offset=1
 debug.sf.enable_gl_backpressure=1
