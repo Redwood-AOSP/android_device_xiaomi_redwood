@@ -83,6 +83,9 @@ blob_fixups: blob_fixups_user_type = {
         .clear_symbol_version('remote_handle64_open')
         .clear_symbol_version('remote_register_buf_attr')
         .clear_symbol_version('remote_session_control'),
+    'vendor/lib64/libmisight.so' : blob_fixup()
+        .add_needed('libjsoncpp_shim.so')
+        .add_needed('libmisightjson_shim.so'),
     ('vendor/lib64/libalAILDC.so', 'vendor/lib64/libalLDC.so', 'vendor/lib64/libalhLDC.so'): blob_fixup()
         .clear_symbol_version('AHardwareBuffer_allocate')
         .clear_symbol_version('AHardwareBuffer_describe')
