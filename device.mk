@@ -77,6 +77,7 @@ PRODUCT_PACKAGES += \
 
 # Display
 $(call soong_config_set,surfaceflinger,frame_rate_category_high,120)
+$(call soong_config_set,surfaceflinger,frame_rate_category_min,60)
 
 PRODUCT_VENDOR_PROPERTIES += \
     vendor.display.idle_time=0
