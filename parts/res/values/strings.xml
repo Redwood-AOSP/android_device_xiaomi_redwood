@@ -51,4 +51,16 @@
     <string name="refresh_high">High (90Hz)</string>
     <string name="refresh_extreme">Extreme (120Hz)</string>
 
+    <!-- Bypass charging -->
+    <string name="charge_bypass_title">Bypass charging</string>
+    <string name="charge_bypass_summary">Stop battery charging and run directly from wired power</string>
+    <string name="charge_bypass_unavailable">Bypass charging is not available on this device</string>
+    <string name="charge_bypass_warning">Bypass charging will stop charging the battery while external power is connected.</string>
+    <string name="charge_bypass_safety_failed">Cannot enable bypass charging: %1$s</string>
+    <string name="charge_safety_not_supported">Required charging control node is unavailable</string>
+    <string name="charge_safety_no_charger">Connect a wired charger first</string>
+    <string name="charge_safety_temp_high">Battery temperature is too high (%1$.1f°C)</string>
+    <string name="charge_safety_low_level">Battery level is too low (%1$d%%)</string>
+    <string name="charge_safety_ok">Safety checks passed</string>
+
 </resources>
