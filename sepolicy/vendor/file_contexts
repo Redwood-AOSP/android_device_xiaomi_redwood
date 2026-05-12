@@ -33,6 +33,9 @@
 # Mlipay
 /vendor/bin/mlipayd@1.1                                                   u:object_r:hal_mlipay_default_exec:s0
 
+# Init
+/(vendor|system/vendor)/bin/init\.lahaina\.perf\.sh                       u:object_r:vendor_qti_init_shell_exec:s0
+
 # Power
 /dev/xiaomi-touch                                                         u:object_r:vendor_touchfeature_device:s0
 /vendor/bin/hw/android\.hardware\.power-service\.lineage-libperfmgr  u:object_r:hal_power_default_exec:s0

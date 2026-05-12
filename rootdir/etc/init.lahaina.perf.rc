@@ -1,0 +1,64 @@
+#
+# Copyright (C) 2021-2023 Paranoid Android
+#           (C) 2023 ArrowOS
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+on init
+    copy_per_line /dev/cpuctl/tasks /dev/cpuctl/system/tasks
+
+    # Boot time fs tuning
+    write /dev/sys/fs/by-name/userdata/data_io_flag 56
+    write /dev/sys/fs/by-name/userdata/node_io_flag 56
+
+on property:sys.boot_completed=1
+    # Migrate tasks again in case kernel threads are created during boot
+    copy_per_line /dev/cpuctl/tasks /dev/cpuctl/system/tasks
+
+    # Runtime fs tuning
+    write /dev/sys/fs/by-name/userdata/data_io_flag 8
+    write /dev/sys/fs/by-name/userdata/node_io_flag 8
+
+on property:vendor.post_boot.parsed=1
+    # Setup runtime cpusets
+    write /dev/cpuset/top-app/cpus 0-7
+    write /dev/cpuset/foreground/cpus 0-6
+    write /dev/cpuset/foreground_window/cpus 0-6
+    write /dev/cpuset/background/cpus 0-3
+    write /dev/cpuset/system-background/cpus 0-3
+    write /dev/cpuset/restricted/cpus 0-3
+    write /dev/cpuset/audio-app/cpus 0-3
+
+    # Configure uclamp
+    write /dev/cpuctl/top-app/cpu.uclamp.latency_sensitive 1
+    write /dev/cpuctl/background/cpu.uclamp.max 50
+    write /dev/cpuctl/system-background/cpu.uclamp.max 50
+    write /dev/cpuctl/dex2oat/cpu.uclamp.max 60
+
+    # Setup cpu.shares to throttle background groups
+    write /dev/cpuctl/background/cpu.shares 1024
+    write /dev/cpuctl/system-background/cpu.shares 1024
+    write /dev/cpuctl/dex2oat/cpu.shares 512
+    write /dev/cpuctl/system/cpu.shares 20480
+    write /dev/cpuctl/camera-daemon/cpu.shares 20480
+    write /dev/cpuctl/foreground/cpu.shares 20480
+    write /dev/cpuctl/nnapi-hal/cpu.shares 20480
+    write /dev/cpuctl/rt/cpu.shares 20480
+    write /dev/cpuctl/top-app/cpu.shares 20480
+
+    # Disable multiple kswapd threads
+    write /proc/sys/vm/kswapd_threads 1
+
+    # Enable suspend to RAM
+    write /sys/power/mem_sleep "deep"
+
+    # Dynamically set IRQ affinity for KGSL and DRM
+    exec u:r:vendor_qti_init_shell:s0 -- /vendor/bin/init.lahaina.perf.sh
+
+    # Enable PowerHAL hint processing
+    setprop vendor.powerhal.init 1
+
+on property:persist.sys.device_provisioned=1
+    setprop dalvik.vm.dex2oat-cpu-set 0,1,2,3,4,5,6
+    setprop dalvik.vm.dex2oat-threads 6
