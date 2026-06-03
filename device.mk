@@ -410,6 +410,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
+# Pixel Features Spoof (for Google Photos)
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/sysconfig/sysconfig_features.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/sysconfig_features.xml
+
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power-service.lineage-libperfmgr \
