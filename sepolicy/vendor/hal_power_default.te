@@ -4,6 +4,9 @@ allow hal_power_default vendor_touchfeature_device:chr_file rw_file_perms;
 
 allow hal_power_default vendor_sysfs_kgsl:lnk_file rw_file_perms;
 
+allow hal_power_default powerhal_vendor_data_file:dir rw_dir_perms;
+allow hal_power_default powerhal_vendor_data_file:file create_file_perms;
+
 allow hal_power_default {
   vendor_sysfs_devfreq
   vendor_sysfs_msm_subsys

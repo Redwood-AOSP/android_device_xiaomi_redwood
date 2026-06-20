@@ -1,2 +1,4 @@
 # Power HAL
 type vendor_sysfs_msm_subsys, fs_type, sysfs_type;
+
+type powerhal_vendor_data_file, file_type, data_file_type;
