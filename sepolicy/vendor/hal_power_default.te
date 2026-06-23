@@ -11,6 +11,9 @@ binder_call(hal_power_default, stats_service_server);
 allow hal_power_default powerhal_vendor_data_file:dir rw_dir_perms;
 allow hal_power_default powerhal_vendor_data_file:file create_file_perms;
 
+hal_client_domain(hal_power_default, hal_thermal)
+allow hal_power_default hal_thermal_service:service_manager find;
+
 allow hal_power_default {
   vendor_sysfs_devfreq
   vendor_sysfs_msm_subsys
