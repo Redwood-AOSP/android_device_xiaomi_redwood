@@ -281,6 +281,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     ipacm \
     IPACM_cfg.xml
+	
+# ION
+$(call soong_config_set_bool,libion,legacy_impl,true)
 
 # IR
 PRODUCT_PACKAGES += \
