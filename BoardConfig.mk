@@ -70,9 +70,10 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
     hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml \
     hardware/xiaomi/vintf/xiaomi_framework_compatibility_matrix.xml
 
-DEVICE_MANIFEST_FILE := \
+DEVICE_MANIFEST_FILE += \
     $(DEVICE_PATH)/hidl/manifest_lahaina.xml \
     $(DEVICE_PATH)/hidl/manifest_xiaomi.xml \
+    $(DEVICE_PATH)/hidl/c2_manifest_vendor.xml \
     $(if $(TARGET_NFC_SUPPORTED_SKUS),$(DEVICE_PATH)/hidl/manifest_no_nfc.xml,)
 
 ifneq ($(TARGET_NFC_SUPPORTED_SKUS),)

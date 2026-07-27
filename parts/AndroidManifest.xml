@@ -5,6 +5,7 @@
     android:versionName="4.0"
     android:sharedUserId="android.uid.system">
 
+    <uses-permission android:name="android.permission.CONFIGURE_DISPLAY_COLOR_MODE" />
     <uses-permission android:name="android.permission.DEVICE_POWER" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
