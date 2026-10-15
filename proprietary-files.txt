@@ -829,7 +829,6 @@ vendor/lib64/egl/libGLESv1_CM_adreno.so
 vendor/lib64/egl/libGLESv2_adreno.so
 vendor/lib64/egl/libq3dtools_adreno.so
 vendor/lib64/egl/libq3dtools_esx.so
-vendor/lib64/hw/vulkan.adreno.so
 vendor/lib64/libC2D2.so
 vendor/lib64/libCB.so
 vendor/lib64/libOpenCL.so
@@ -838,6 +837,16 @@ vendor/lib64/libc2d30_bltlib.so
 vendor/lib64/libgsl.so
 vendor/lib64/libllvm-glnext.so
 vendor/lib64/libllvm-qcom.so
+
+# Graphics - Adreno Vulkan v863.1 (Meta Ray-Ban Display v123, patched), Vulkan only, 64-bit only
+# Pinned: extract-files keeps these and never takes them from a stock dump.
+vendor/lib64/adrenoutils_extra.so;DISABLE_CHECKELF|4dac7131b94f7e926b242bc69b30917b56f5ea73
+vendor/lib64/hw/vulkan.adreno.so|790f2780995c95b771f30988e7d46da7d7ecc539
+vendor/lib64/notadreno_utils.so|868b61713ac34e3a8579601cb0e4c2aff9b491b9
+vendor/lib64/notdmabufheap.so|736c0a3e781c81c24cdaa6a679819b549e4d276f
+vendor/lib64/notgsl.so|70f66a7fab47e43d15cfe5436f18ea6a5096935b
+vendor/lib64/notllvm-glnext.so|f9f076cc3cfae854a63462d8844fa55baa9402ce
+vendor/lib64/notllvm-qgl.so|0aeba8b8b0936078b5ec11ae2b9199a05396a56f
 
 # Graphics firmware
 vendor/firmware/a660_gmu.bin
