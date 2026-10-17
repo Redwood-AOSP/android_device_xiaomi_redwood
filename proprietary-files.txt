@@ -824,13 +824,10 @@ vendor/lib/libgsl.so
 vendor/lib/libllvm-glnext.so
 vendor/lib/libllvm-qcom.so
 vendor/lib64/libC2D2.so
-vendor/lib64/libCB.so
-vendor/lib64/libOpenCL.so
 vendor/lib64/libadreno_utils.so
 vendor/lib64/libc2d30_bltlib.so
 vendor/lib64/libgsl.so
 vendor/lib64/libllvm-glnext.so
-vendor/lib64/libllvm-qcom.so
 
 # Graphics - Adreno Vulkan v863.1 (Meta Ray-Ban Display v123, patched), Vulkan only, 64-bit only
 # Pinned: extract-files keeps these and never takes them from a stock dump.
@@ -843,6 +840,7 @@ vendor/lib64/notllvm-glnext.so|f9f076cc3cfae854a63462d8844fa55baa9402ce
 vendor/lib64/notllvm-qgl.so|0aeba8b8b0936078b5ec11ae2b9199a05396a56f
 
 # Graphics - Adreno v863.1 OpenGL ES (863v3 package, V@0863.1), 64-bit only, replaces the stock GL.
+# The router trio lives in vendor/lib64 so GL (sphal) and OpenCL users (camera HAL) both find it.
 # Uses the Vulkan's notgsl/notllvm-glnext (same code). v86adreno_utils routes layout checks to
 # s53adreno_utils (stock V@0530, reads gralloc metadata v3; its isUBWCSupportedByGpu export is
 # renamed so that call goes to v88adreno_utils = v863's own). See adreno_v863_gl_rom/FINDINGS.md.
@@ -853,11 +851,24 @@ vendor/lib64/egl/libGLESv1_CM_adreno.so;DISABLE_CHECKELF|231591df02918e0cea259fa
 vendor/lib64/egl/libGLESv2_adreno.so;DISABLE_CHECKELF|16bd6dcdf38c2e1732c7991f514693ae8394a689
 vendor/lib64/egl/libq3dtools_adreno.so;DISABLE_CHECKELF|a85e440f1f9f3b4dbac2f0f18ff3f05d6e747a70
 vendor/lib64/egl/libq3dtools_esx.so;DISABLE_CHECKELF|541b4d3496a2f2a969892b79215eac4f410e0ba2
-vendor/lib64/egl/s53adreno_utils.so;DISABLE_CHECKELF|16491bffca535b89ebfc1b92c9003681ef5d8cec
-vendor/lib64/egl/v86adreno_utils.so;DISABLE_CHECKELF|c246d5f6f4566efb6555d51fc8bc44ef80879735
-vendor/lib64/egl/v88adreno_utils.so;DISABLE_CHECKELF|ae3420be7eb8fba1a4266c5a78b44f7ee8b7da28
+vendor/lib64/s53adreno_utils.so;DISABLE_CHECKELF|16491bffca535b89ebfc1b92c9003681ef5d8cec
+vendor/lib64/v86adreno_utils.so;DISABLE_CHECKELF|c246d5f6f4566efb6555d51fc8bc44ef80879735
+vendor/lib64/v88adreno_utils.so;DISABLE_CHECKELF|ae3420be7eb8fba1a4266c5a78b44f7ee8b7da28
 vendor/lib64/egl/v86adreno_app_profiles.so;DISABLE_CHECKELF|ff5570b3099949bfbaf11cbf45c0bc307740805b
 vendor/lib64/egl/vendor.qti.qspmhal@1.0.so;DISABLE_CHECKELF|1c0db76a025bbe2214540d88522ae9f7a6b7f5d1
+
+# Graphics - Adreno v863.1 OpenCL (863v3 package), 64-bit only, replaces the stock OpenCL.
+# libgsl.so -> notgsl.so (libOpenCL, libOpenCL_adreno, libCB) and libadreno_utils.so ->
+# v86adreno_utils.so (libCB), same-length renames. Tested as a KernelSU module 2026-10-17:
+# camera (MACE AI, portrait, night) and Geekbench OpenCL worked, no crashes.
+# Pinned: extract-files keeps these and never takes them from a stock dump.
+vendor/lib64/libOpenCL.so;DISABLE_CHECKELF|56d4fb75902f8a4856a0cfea86a0ac9c7ee0779c
+vendor/lib64/libCB.so;DISABLE_CHECKELF|93c44653e48d24c3a8b9f4f7c25aaff3da1eaf00
+vendor/lib64/libllvm-qcom.so;DISABLE_CHECKELF|c5b21de4faa050f27d0bb2d77a575144763d8fa8
+vendor/lib64/libOpenCL_adreno.so;DISABLE_CHECKELF|9a063e1506014e6bb1459971f7fe01aa8d7b4b47
+vendor/lib64/libkcl.so;DISABLE_CHECKELF|14adaa7dc25ff581d2b877c8a30c003dc902ef38
+vendor/lib64/libadreno_compiler_cl.so;DISABLE_CHECKELF|0e739ed8594d47dce7a45d9176f0a5893fff70f5
+vendor/lib64/libkernelmanager.so;DISABLE_CHECKELF|67b2d698b4e7671ea5f733a828c551c37f9772e9
 
 # Graphics firmware
 vendor/firmware/a660_gmu.bin
