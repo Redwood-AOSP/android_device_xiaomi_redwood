@@ -9,6 +9,9 @@
 # Graphics (Adreno Vulkan v863.1 helpers; vulkan.adreno.so is labelled by qcom sepolicy)
 /vendor/lib64/adrenoutils_extra\.so                                        u:object_r:same_process_hal_file:s0
 /vendor/lib64/not(gsl|adreno_utils|llvm-glnext|llvm-qgl|dmabufheap)\.so    u:object_r:same_process_hal_file:s0
+# Adreno v863.1 GL/OpenCL: adreno_utils router and OpenCL helpers (outside egl/, loaded by apps)
+/vendor/lib64/(s53|v86|v88)adreno_utils\.so                                u:object_r:same_process_hal_file:s0
+/vendor/lib64/lib(OpenCL_adreno|kcl|kernelmanager)\.so                     u:object_r:same_process_hal_file:s0
 
 # Camera
 /mnt/vendor/persist/camera(/.*)?                                          u:object_r:camera_persist_file:s0
