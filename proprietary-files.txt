@@ -870,6 +870,12 @@ vendor/lib64/libkcl.so;DISABLE_CHECKELF|14adaa7dc25ff581d2b877c8a30c003dc902ef38
 vendor/lib64/libadreno_compiler_cl.so;DISABLE_CHECKELF|0e739ed8594d47dce7a45d9176f0a5893fff70f5
 vendor/lib64/libkernelmanager.so;DISABLE_CHECKELF|67b2d698b4e7671ea5f733a828c551c37f9772e9
 
+# Graphics - Adreno v863.1 GPU tone mapper (863v3 package), 64-bit; replaces the one built from
+# hardware/qcom-caf/sm8350/display/gpu_tonemapper (same exports). Used by the display composer
+# for HDR layers it composes on the GPU. Tested as a KernelSU module 2026-10-17 (HDR video,
+# rotation, shade, screenshot, screen recording, picture-in-picture).
+vendor/lib64/libgpu_tonemapper.so;DISABLE_CHECKELF|7642c761d5054f29e8d3e4ad586768b98edb16cd
+
 # Graphics firmware
 vendor/firmware/a660_gmu.bin
 vendor/firmware/a660_sqe.fw
