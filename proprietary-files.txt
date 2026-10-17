@@ -823,12 +823,6 @@ vendor/lib/libc2d30_bltlib.so
 vendor/lib/libgsl.so
 vendor/lib/libllvm-glnext.so
 vendor/lib/libllvm-qcom.so
-vendor/lib64/egl/eglSubDriverAndroid.so
-vendor/lib64/egl/libEGL_adreno.so
-vendor/lib64/egl/libGLESv1_CM_adreno.so
-vendor/lib64/egl/libGLESv2_adreno.so
-vendor/lib64/egl/libq3dtools_adreno.so
-vendor/lib64/egl/libq3dtools_esx.so
 vendor/lib64/libC2D2.so
 vendor/lib64/libCB.so
 vendor/lib64/libOpenCL.so
@@ -847,6 +841,23 @@ vendor/lib64/notdmabufheap.so|736c0a3e781c81c24cdaa6a679819b549e4d276f
 vendor/lib64/notgsl.so|70f66a7fab47e43d15cfe5436f18ea6a5096935b
 vendor/lib64/notllvm-glnext.so|f9f076cc3cfae854a63462d8844fa55baa9402ce
 vendor/lib64/notllvm-qgl.so|0aeba8b8b0936078b5ec11ae2b9199a05396a56f
+
+# Graphics - Adreno v863.1 OpenGL ES (863v3 package, V@0863.1), 64-bit only, replaces the stock GL.
+# Uses the Vulkan's notgsl/notllvm-glnext (same code). v86adreno_utils routes layout checks to
+# s53adreno_utils (stock V@0530, reads gralloc metadata v3; its isUBWCSupportedByGpu export is
+# renamed so that call goes to v88adreno_utils = v863's own). See adreno_v863_gl_rom/FINDINGS.md.
+# Pinned: extract-files keeps these and never takes them from a stock dump.
+vendor/lib64/egl/eglSubDriverAndroid.so;DISABLE_CHECKELF|353677f878490373f1d839c69de76c988b35947b
+vendor/lib64/egl/libEGL_adreno.so;DISABLE_CHECKELF|e96090cff76a20bb5c1b47179498cb4ecb29ca71
+vendor/lib64/egl/libGLESv1_CM_adreno.so;DISABLE_CHECKELF|231591df02918e0cea259fa402469e3ca1e0e1ff
+vendor/lib64/egl/libGLESv2_adreno.so;DISABLE_CHECKELF|16bd6dcdf38c2e1732c7991f514693ae8394a689
+vendor/lib64/egl/libq3dtools_adreno.so;DISABLE_CHECKELF|a85e440f1f9f3b4dbac2f0f18ff3f05d6e747a70
+vendor/lib64/egl/libq3dtools_esx.so;DISABLE_CHECKELF|541b4d3496a2f2a969892b79215eac4f410e0ba2
+vendor/lib64/egl/s53adreno_utils.so;DISABLE_CHECKELF|16491bffca535b89ebfc1b92c9003681ef5d8cec
+vendor/lib64/egl/v86adreno_utils.so;DISABLE_CHECKELF|c246d5f6f4566efb6555d51fc8bc44ef80879735
+vendor/lib64/egl/v88adreno_utils.so;DISABLE_CHECKELF|ae3420be7eb8fba1a4266c5a78b44f7ee8b7da28
+vendor/lib64/egl/v86adreno_app_profiles.so;DISABLE_CHECKELF|ff5570b3099949bfbaf11cbf45c0bc307740805b
+vendor/lib64/egl/vendor.qti.qspmhal@1.0.so;DISABLE_CHECKELF|1c0db76a025bbe2214540d88522ae9f7a6b7f5d1
 
 # Graphics firmware
 vendor/firmware/a660_gmu.bin
