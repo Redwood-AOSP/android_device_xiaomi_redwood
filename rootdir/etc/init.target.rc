@@ -149,6 +149,9 @@ on boot
 
     write /sys/block/sda/queue/wbt_lat_usec 75000
 
+    # Use BBR for TCP congestion control
+    write /proc/sys/net/ipv4/tcp_congestion_control bbr
+
     # Set fingerprint related permissions
     chown system system /sys/devices/platform/soc/soc:qcom,dsi-display-primary/fod_hbm
     chown system system /sys/devices/platform/soc/soc:qcom,dsi-display-primary/fod_ui
