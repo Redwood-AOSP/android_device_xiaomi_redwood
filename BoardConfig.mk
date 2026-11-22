@@ -5,7 +5,6 @@
 #
 
 DEVICE_PATH := device/xiaomi/redwood
-KERNEL_PATH := device/xiaomi/redwood-kernel
 
 BOARD_VENDOR := xiaomi
 
@@ -90,9 +89,9 @@ BOARD_RAMDISK_USE_LZ4 := true
 BOARD_BOOT_HEADER_VERSION := 3
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 
+TARGET_KERNEL_SOURCE := kernel/xiaomi/redwood
+TARGET_KERNEL_CONFIG := vendor/xiaomi-qgki_defconfig vendor/redwood.config
 TARGET_KERNEL_ADDITIONAL_FLAGS := TARGET_PRODUCT=$(PRODUCT_DEVICE)
-TARGET_KERNEL_CLANG_VERSION := r563880c
-TARGET_KERNEL_CLANG_PATH := $(abspath .)/prebuilts/clang/host/linux-x86/clang-$(TARGET_KERNEL_CLANG_VERSION)
 TARGET_KERNEL_NO_GCC := true
 
 BOARD_KERNEL_CMDLINE += androidboot.console=ttyMSM0
@@ -109,13 +108,6 @@ BOARD_KERNEL_CMDLINE += pcie_ports=compat
 BOARD_KERNEL_CMDLINE += iptable_raw.raw_before_defrag=1
 BOARD_KERNEL_CMDLINE += ip6table_raw.raw_before_defrag=1
 BOARD_KERNEL_CMDLINE += androidboot.init_fatal_reboot_target=recovery
-
-# Kernel Pre-compiled
-TARGET_NO_KERNEL_OVERRIDE := true
-TARGET_KERNEL_SOURCE := $(KERNEL_PATH)/kernel-headers
-BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbo.img
-BOARD_PREBUILT_DTBIMAGE_DIR := $(KERNEL_PATH)/dtb
-BOARD_MKBOOTIMG_ARGS += --dtb $(BOARD_PREBUILT_DTBIMAGE_DIR)/01_dtbdump_Qualcomm_Technologies,_Inc._Yupik_SoC.dtb
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
