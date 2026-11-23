@@ -92,6 +92,7 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 TARGET_KERNEL_SOURCE := kernel/xiaomi/redwood
 TARGET_KERNEL_CONFIG := vendor/xiaomi-qgki_defconfig vendor/redwood.config
 TARGET_KERNEL_ADDITIONAL_FLAGS := TARGET_PRODUCT=$(PRODUCT_DEVICE)
+TARGET_KERNEL_CLANG_VERSION := r584948b
 TARGET_KERNEL_NO_GCC := true
 
 BOARD_KERNEL_CMDLINE += androidboot.hardware=qcom
